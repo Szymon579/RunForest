@@ -1,0 +1,24 @@
+-> door collider
+	mesh collider zamieniony na box collider na górze prefaba
+	bo mesh nie ma wycięcia w środku i triggeruje bezsensowne 
+	kolizje. Trzebaby wyciąć to w jakims blenderze czy innym 
+	gównie. 
+
+-> ekran wyjebki
+	jak sie ziut wydzwoni to zakończyć grę w jakić ciekawy 
+	sposób
+
+
+-> ui podczas gry
+	wyświetlanie liczby monet i przebytego dystansu
+
+-> bardzej crisp zmiana pasa
+	buforowanie inputów albo coś w tym stylu żeby można było 
+	kliknąc kolejne A/D zanim skończy się animacja
+
+-> dodanie customizacji ziuta 
+	dodanie osobnej sceny z kolorami ubrań dla ziutka
+	do kupienia za monety
+
+-> dźwięki 
+	dodać dźwięki :)
