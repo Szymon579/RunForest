@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollisionController : MonoBehaviour
 {
 
-    private int coin = 0;
+    public static int coins = 0;
     private Collider myCollider;
     private bool musicPlaying = false;
 
@@ -32,8 +32,8 @@ public class CollisionController : MonoBehaviour
         //coin collection
         if (other.transform.tag == "Coin")
         {
-            coin++;
-            Debug.Log("Coins: " + coin);
+            coins++;
+            Debug.Log("Coins: " + coins);
             AudioController.instance.PlayCoinSound(this.transform);
             Destroy(other.gameObject);
         }

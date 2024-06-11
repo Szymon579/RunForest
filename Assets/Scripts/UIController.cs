@@ -7,17 +7,17 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     public TextMeshProUGUI distanceText;
-
+    public TextMeshProUGUI coinText;
 
     void Start()
     {
-        distanceText.text = "elo";
     }
 
     void Update()
     {
-        //int distance = (int)GroundSpawner.speed;
-        float distance = GroundSpawner.speed;
+        int distance = (int)(GroundSpawner.speed * Time.timeSinceLevelLoad);
         distanceText.text = distance.ToString();
+
+        coinText.text = CollisionController.coins.ToString();
     }
 }
