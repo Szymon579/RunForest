@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -9,17 +10,19 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject slidePrefab;
     public GameObject dodgePrefab;
     public GameObject coinPrefab;
-
     public int noObstacles = 3;
 
     private float height = 0.5f;
     private Dictionary<int, int> obstacles = new Dictionary<int, int>();
+    private List<GameObject> coins = new List<GameObject>();
+
+    private static int numOfSpawners = 0;
 
     //obstacle placement: x = -1:1, y = 1.5, z = -10:10
-
     void Start()
     {
-        
+        numOfSpawners++;
+        Debug.Log("Obstacle spawner: " + numOfSpawners);
 
         int i = 0;
         while (i < noObstacles)
@@ -57,8 +60,13 @@ public class ObstacleSpawner : MonoBehaviour
                 continue;
             }
 
+            float height = 0.5f;
 
-            GameObject obstacle = Instantiate(prefab, road.transform.position + new Vector3(value, 0.5f, key), Quaternion.identity, transform);
+            if (type == 3)
+                height = 0.7f;
+                
+            
+            GameObject obstacle = Instantiate(prefab, road.transform.position + new Vector3(value, height, key), Quaternion.identity, transform);
             obstacle.transform.SetParent(transform);
         }
 

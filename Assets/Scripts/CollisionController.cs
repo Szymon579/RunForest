@@ -7,10 +7,17 @@ public class CollisionController : MonoBehaviour
 
     private int coin = 0;
     private Collider myCollider;
+    private bool musicPlaying = false;
 
     private void Start()
     {
         myCollider = GetComponent<CapsuleCollider>();
+
+        if(!musicPlaying)
+        {
+            AudioController.instance.PlayMusic();
+            musicPlaying = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +34,7 @@ public class CollisionController : MonoBehaviour
         {
             coin++;
             Debug.Log("Coins: " + coin);
-        
+            AudioController.instance.PlayCoinSound(this.transform);
             Destroy(other.gameObject);
         }
     }
