@@ -5,13 +5,19 @@ using UnityEngine;
 public class CollisionController : MonoBehaviour
 {
 
+    public static bool playerCrashed = false;
+
     public static int coins = 0;
-    private Collider myCollider;
+    private Collider collider;
+    private Animator animator;
+    private Rigidbody rb;
     private bool musicPlaying = false;
 
     private void Start()
     {
-        myCollider = GetComponent<CapsuleCollider>();
+        collider = GetComponent<CapsuleCollider>();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
 
         if(!musicPlaying)
         {
@@ -26,7 +32,8 @@ public class CollisionController : MonoBehaviour
         if (other.transform.tag == "Obstacle")
         {
             Debug.Log("Obstacle hit");
-
+            playerCrashed = true;
+            cursedRagdoll();
         }
 
         //coin collection
@@ -37,6 +44,15 @@ public class CollisionController : MonoBehaviour
             AudioController.instance.PlayCoinSound(this.transform);
             Destroy(other.gameObject);
         }
+    }
+
+    private void cursedRagdoll()
+    {
+        rb.freezeRotation = false;
+        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        rb.AddForce(Vector3.forward * 2, ForceMode.Impulse);
+        
+        animator.enabled = false;
     }
 
 }

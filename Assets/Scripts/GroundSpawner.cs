@@ -7,16 +7,29 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour
 {
     static public float speed = 10.0f;
+    
     public float speedDelta = 0.01f;
     public float deleteZ;
     public int numOfVisibleTiles = 5;
     public GameObject groundPrefab;
     public GameObject startPrefab;
+    public bool disableMove = false;
 
     private List<GameObject> groundList = new List<GameObject>();
 
+    void disableMovement(bool condition)
+    {
+        if(condition)
+        {
+            speed = 0f;
+            speedDelta = 0f;
+        }
+    }
+
     void Start()
     {
+        disableMovement(disableMove);
+
         transform.position = startPrefab.transform.position;
         groundList.Add(startPrefab); //tile already placed on scene
 
@@ -29,6 +42,10 @@ public class GroundSpawner : MonoBehaviour
 
     void Update()
     {
+        if (CollisionController.playerCrashed)
+            disableMovement(true);
+        
+        
         speed += speedDelta * Time.deltaTime; // accelerate ground independently from framerate
         
         for(int i = 0; i < groundList.Count; i++)
