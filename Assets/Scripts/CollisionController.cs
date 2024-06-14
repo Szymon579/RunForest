@@ -6,8 +6,8 @@ public class CollisionController : MonoBehaviour
 {
 
     public static bool playerCrashed = false;
-
     public static int coins = 0;
+
     private Collider collider;
     private Animator animator;
     private Rigidbody rb;
