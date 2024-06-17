@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCtrl2 : MonoBehaviour
 {
-    public float speed = 1.0f;
-    public float drift = 2.0f;
+    public float sidewaySpeed = 2.0f;
     public float jumpForce = 5.0f;
 
     private Rigidbody rb;
@@ -25,9 +24,7 @@ public class PlayerCtrl2 : MonoBehaviour
         animator = GetComponent<Animator>();
         coll = GetComponent<CapsuleCollider>();
 
-        xPosition = rb.position.x;
-
-        
+        xPosition = rb.position.x;       
     }
 
     void Update()
@@ -40,7 +37,7 @@ public class PlayerCtrl2 : MonoBehaviour
     void MoveHorizontal()
     {
         Vector3 pos = rb.position;
-        pos.x = Mathf.MoveTowards(pos.x, xPosition, drift * Time.deltaTime);
+        pos.x = Mathf.MoveTowards(pos.x, xPosition, sidewaySpeed * Time.deltaTime);
         rb.position = pos;
 
         if (Input.GetKeyDown(KeyCode.A) && pos.x % 1 == 0 && !(pos.x <= -1))

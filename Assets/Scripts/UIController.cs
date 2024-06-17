@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -27,8 +28,19 @@ public class UIController : MonoBehaviour
 
     }
 
-    void Restart()
+    public void RestartGame()
     {
-        Debug.Log("restart");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        CollisionController.playerCrashed = false;
+        GroundSpawner.speed = 10.0f;
+        gameOverPanel.SetActive(false);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        CollisionController.playerCrashed = false;
+        GroundSpawner.speed = 10.0f;
+        gameOverPanel.SetActive(false);
     }
 }
