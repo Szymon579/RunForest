@@ -18,12 +18,12 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        int distance = (int)(GroundSpawner.speed * Time.timeSinceLevelLoad);
+        int distance = (int)(GameState.speed * Time.timeSinceLevelLoad);
         distanceText.text = distance.ToString();
 
-        coinText.text = CollisionController.coins.ToString();
+        coinText.text = GameState.coins.ToString();
 
-        if (CollisionController.playerCrashed)
+        if (GameState.gameOver)
             gameOverPanel.SetActive(true);
 
     }
@@ -31,16 +31,24 @@ public class UIController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        CollisionController.playerCrashed = false;
-        GroundSpawner.speed = 10.0f;
+
+        GameState.ResetState();
         gameOverPanel.SetActive(false);
+
+        //CollisionController.playerCrashed = false;
+        //GroundSpawner.speed = 10.0f;
+        //gameOverPanel.SetActive(false);
     }
 
     public void Menu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        CollisionController.playerCrashed = false;
-        GroundSpawner.speed = 10.0f;
+
+        GameState.ResetState();
         gameOverPanel.SetActive(false);
+
+        //CollisionController.playerCrashed = false;
+        //GroundSpawner.speed = 10.0f;
+        //gameOverPanel.SetActive(false);
     }
 }

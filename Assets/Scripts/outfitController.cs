@@ -5,7 +5,11 @@ using UnityEngine;
 public class outfitController : MonoBehaviour
 {
     public Material pantsMaterial;
-    Color defaultColor;
+
+    private void Start()
+    {
+        pantsMaterial.color = GameState.pantsColor;
+    }
 
     void Update()
     {

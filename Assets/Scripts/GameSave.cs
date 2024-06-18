@@ -14,19 +14,28 @@ public class Save
     }
 }
 
-
 public static class GameSave
 {
-    public static string fileName = "save.json";
+    public static string filePath = Application.dataPath + "/save.json";
     
     public static void LoadState()
     {
-        JsonUtility.FromJson<Save>(fileName);
+        if(!File.Exists(filePath)) 
+        {
+            return;
+        }
+
+        string jsonString = File.ReadAllText(filePath);
+        
+        Save saveObject = JsonUtility.FromJson<Save>(jsonString);
+        
+        GameState.coins = saveObject.coins;
+        Debug.Log("Coins from game state: " + GameState.coins);
     }
 
     public static void SaveState(Save saveObject)
     {
         string json = JsonUtility.ToJson(saveObject);
-        File.WriteAllText(Application.dataPath + "/" + fileName, json);
+        File.WriteAllText(filePath, json);
     }
 }

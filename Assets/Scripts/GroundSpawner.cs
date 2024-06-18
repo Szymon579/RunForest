@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GroundSpawner : MonoBehaviour
 {
-    static public float speed = 10.0f;
+    //public float speed = GameState.speed;
     
     public float speedDelta = 0.01f;
     public float deleteZ;
@@ -21,7 +21,7 @@ public class GroundSpawner : MonoBehaviour
     {
         if(condition)
         {
-            speed = 0f;
+            GameState.speed = 0f;
             speedDelta = 0f;
         }
     }
@@ -42,15 +42,15 @@ public class GroundSpawner : MonoBehaviour
 
     void Update()
     {
-        if (CollisionController.playerCrashed)
+        if (GameState.gameOver)
             disableMovement(true);
         
         
-        speed += speedDelta * Time.deltaTime; // accelerate ground independently from framerate
+        GameState.speed += speedDelta * Time.deltaTime; // accelerate ground independently from framerate
         
         for(int i = 0; i < groundList.Count; i++)
         {
-            groundList[i].transform.Translate(Vector3.back * Time.deltaTime * speed);
+            groundList[i].transform.Translate(Vector3.back * Time.deltaTime * GameState.speed);
 
             if (groundList[i].transform.position.z < deleteZ)
             {
