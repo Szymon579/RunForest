@@ -9,7 +9,7 @@ public class ShopController : MonoBehaviour
 {
     private string pricePanelName = "PricePanel";
     private string setPanelName = "SetPanel";
-    private int id = -1;
+    private int id = 0;
 
     Transform priceTransform;
     GameObject pricePanel;
@@ -23,9 +23,11 @@ public class ShopController : MonoBehaviour
     {
         priceTransform = transform.Find(pricePanelName);
         pricePanel = priceTransform.gameObject;
+        pricePanel.SetActive(true);
 
         setTransform = transform.Find(setPanelName);
         setPanel = setTransform.gameObject;
+        setPanel.SetActive(true);
 
         GameSave.LoadState();
 
@@ -48,6 +50,7 @@ public class ShopController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("update shop controller");
         if(shopItem.bought && id == GameState.selectedId) 
         {
             setPanel.SetActive(true);
@@ -75,14 +78,51 @@ public class ShopController : MonoBehaviour
         setPanel.SetActive(false);
     }
 
-    private void SetPrice()
-    {
-        GetComponentInChildren<TextMeshProUGUI>().text = shopItem.price.ToString();
+    
+
+    public void BuyOrSetItem()
+    {   
+
+        if (!shopItem.bought) 
+        {
+            Debug.Log("BuyItem");
+            BuyItem();
+        }
+        else
+        {
+            Debug.Log("SetItem");
+            SetItem();
+        }
+
+        //GameSave.SaveState(new Save(GameState.coins, GameState.items, GameState.selectedId));
     }
 
-    private void SetColor()
+    private void BuyItem()
     {
-        gameObject.GetComponent<Image>().color = shopItem.color;
+
+        int price = shopItem.price;
+        if (price > GameState.coins)
+        {
+            Debug.Log("Get money broke boy");
+            //SetNotBought();
+            return;
+        }
+
+        GameState.coins -= price;
+        
+        shopItem.bought = true;
+        GameState.items[id] = shopItem;
+
+        pricePanel.SetActive(false);
+        SetBought();
+        SetItem();
+    }
+
+    private void SetItem()
+    {
+        setPanel.SetActive(true);
+        GameState.selectedId = id;
+        GameState.pantsColor = this.gameObject.GetComponent<Image>().color;
     }
 
     private int GetItemId()
@@ -93,47 +133,13 @@ public class ShopController : MonoBehaviour
         return int.Parse(strId);
     }
 
-    public void BuyOrSetItem()
-    {   
-        if (pricePanel == null) 
-        {
-            Debug.Log("Panel is null");
-            return;
-        }
-
-        if (pricePanel.active) 
-        {
-            BuyItem();
-        }
-        else
-        {
-            SetItem();
-        }
-     
+    private void SetPrice()
+    {
+        GetComponentInChildren<TextMeshProUGUI>().text = shopItem.price.ToString();
     }
 
-    private void BuyItem()
+    private void SetColor()
     {
-
-        int price = shopItem.price;
-        if (price > GameState.coins)
-        {
-            Debug.Log("Get money broke boy");
-            return;
-        }
-
-        GameState.coins -= price;
-        GameState.items[id].bought = true;
-
-        pricePanel.SetActive(false);
-
-        SetItem();
-    }
-
-    private void SetItem()
-    {
-        setPanel.SetActive(true);
-        GameState.selectedId = id;
-        GameState.pantsColor = this.gameObject.GetComponent<Image>().color;
+        gameObject.GetComponent<Image>().color = shopItem.color;
     }
 }

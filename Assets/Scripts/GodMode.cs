@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class GodMode : MonoBehaviour
 {
+    public GameObject menu;
+    public GameObject shop;
+
     void Start()
     {
-        
+        menu.SetActive(true);
+        shop.SetActive(false);
     }
 
     void Update()
