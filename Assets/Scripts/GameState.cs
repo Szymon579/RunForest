@@ -11,6 +11,8 @@ public class GameState : MonoBehaviour
     public static float speed = 10.0f;
     public static bool gameOver = false;
     public static Color pantsColor = new Color(0, 1, 0);
+    public static List<ShopItem> items = new List<ShopItem>();
+    public static int selectedId = 0;
 
     public static void ResetState()
     {

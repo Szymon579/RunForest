@@ -26,21 +26,11 @@ public class MenuController : MonoBehaviour
 
     public void QuitGame()
     {
-        GameSave.SaveState(new Save(123));
+        GameSave.SaveState(new Save(123, GameState.items, GameState.selectedId));
                  
         Debug.Log("Quit");
         Application.Quit();
     }
 
-    public void BuyItem(int price)
-    {
-        
-        
-        //if (GameState.coins < price)
-        //    return;
-
-        //GameState.coins -= price;
-        //Debug.Log("Item bought: ");
-    }
 
 }

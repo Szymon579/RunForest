@@ -1,1 +1,1 @@
-{"coins":123}
+{"coins":123,"items":[{"price":100,"color":{"r":1.0,"g":0.0,"b":0.0,"a":1.0},"bought":true},{"price":200,"color":{"r":0.0,"g":1.0,"b":0.0,"a":1.0},"bought":true},{"price":300,"color":{"r":0.0,"g":0.0,"b":1.0,"a":1.0},"bought":true}],"selectedItem":0}

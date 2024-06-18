@@ -49,7 +49,7 @@ public class CollisionController : MonoBehaviour
         
         anim.enabled = false;
 
-        GameSave.SaveState(new Save(GameState.coins));
+        GameSave.SaveState(new Save(GameState.coins, GameState.items, GameState.selectedId));
     }
 
 }
