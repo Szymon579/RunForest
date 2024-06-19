@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI coinsText;
     public GameObject menuPanel;
     public GameObject shopPanel;
+    public TextMeshProUGUI recordText;
 
 
     private void Start()
@@ -20,6 +21,7 @@ public class MenuController : MonoBehaviour
     private void Update()
     {
         coinsText.text = GameState.coins.ToString();
+        recordText.text = "Record : " + GameState.record.ToString();
     }
 
     public void PlayGame()

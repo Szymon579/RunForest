@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI coinText;
     public GameObject gameOverPanel;
+    public TextMeshProUGUI recordText;
 
     void Start()
     {
@@ -29,17 +30,24 @@ public class UIController : MonoBehaviour
 
         coinText.text = GameState.coins.ToString();
 
-        
 
-        if (GameState.gameOver)
+        recordText.enabled = false;
+        recordText.text = "Record : " + GameState.record.ToString();
+
+
+
+
+        if (GameState.gameOver) {
+            recordText.enabled = true;
             gameOverPanel.SetActive(true);
+        }
 
     }
 
     public void RestartGame()
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         GameState.ResetState();
         gameOverPanel.SetActive(false);
 
