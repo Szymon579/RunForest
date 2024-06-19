@@ -253,6 +253,7 @@ MonoBehaviour:
   coinClip: {fileID: 8300000, guid: 353eb42406f806143ac508fb75950b4b, type: 3}
   musicClip: {fileID: 8300000, guid: b41d6c86ff480b04ca4e9531bc7d02ed, type: 3}
   deathClip: {fileID: 8300000, guid: 864b4beb27a2c2e47b071d7c0acfb596, type: 3}
+  powerClip: {fileID: 8300000, guid: 958725f195b4ddd45bce947b3b39d508, type: 3}
 --- !u!4 &65997954
 Transform:
   m_ObjectHideFlags: 0
@@ -9048,6 +9049,7 @@ MonoBehaviour:
   slidePrefab: {fileID: 8356479769695924971, guid: 1127c293957e7494494cfa624f932616, type: 3}
   dodgePrefab: {fileID: 1671777132973857220, guid: 37c96fd8c5c9c154cbcfc7ceffadec92, type: 3}
   coinPrefab: {fileID: 1259478113272477849, guid: d331811375ab2014ab7417f01de1e77e, type: 3}
+  powerPrefab: {fileID: 0}
   noObstacles: 3
 --- !u!23 &8015250195354468870
 MeshRenderer:

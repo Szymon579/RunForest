@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,18 @@ public class CollisionController : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody rb;
+    private Collider col;
 
     private bool musicPlaying = false;
+    private bool powerUP = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        col = GetComponent<Collider>();
 
-        if(!musicPlaying)
+        if (!musicPlaying)
         {
             AudioController.instance.PlayMusic();
             musicPlaying = true;
@@ -24,7 +28,7 @@ public class CollisionController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.transform.tag == "Obstacle")
+        if (other.transform.tag == "Obstacle" && !powerUP)
         {
             Debug.Log("Obstacle hit");
             AudioController.instance.PlayDeathSound(this.transform);
@@ -42,6 +46,15 @@ public class CollisionController : MonoBehaviour
             AudioController.instance.PlayCoinSound(this.transform);
             Destroy(other.gameObject);
         }
+
+        if (other.transform.tag == "Power")
+        {
+            powerUP = true;
+            WaitAndDo(5.0f, () => { powerUP = false; });
+            AudioController.instance.PlayPowerSound(this.transform);
+            Destroy(other.gameObject);
+        }
+
     }
 
     private void cursedRagdoll()
@@ -55,4 +68,15 @@ public class CollisionController : MonoBehaviour
         GameSave.SaveState(new Save());
     }
 
+
+    public Coroutine WaitAndDo(float timeInSeconds, Action action)
+    {
+        return StartCoroutine(Execute(timeInSeconds, action));
+    }
+
+    private IEnumerator Execute(float timeInSeconds, Action action)
+    {
+        yield return new WaitForSeconds(timeInSeconds);
+        if (Application.isPlaying) action();
+    }
 }

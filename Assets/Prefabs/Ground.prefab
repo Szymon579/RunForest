@@ -2296,6 +2296,7 @@ MonoBehaviour:
   slidePrefab: {fileID: 8356479769695924971, guid: 1127c293957e7494494cfa624f932616, type: 3}
   dodgePrefab: {fileID: 1671777132973857220, guid: 37c96fd8c5c9c154cbcfc7ceffadec92, type: 3}
   coinPrefab: {fileID: 1259478113272477849, guid: d331811375ab2014ab7417f01de1e77e, type: 3}
+  powerPrefab: {fileID: 4530976292399286079, guid: 909cc3779d4b2a04c975e63f75ca1080, type: 3}
   noObstacles: 3
 --- !u!1 &7131593472892470710
 GameObject:

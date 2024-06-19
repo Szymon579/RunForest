@@ -11,6 +11,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject slidePrefab;
     public GameObject dodgePrefab;
     public GameObject coinPrefab;
+    public GameObject powerPrefab;
     public int noObstacles = 3;
 
     private float height = 0.5f;
@@ -55,7 +56,14 @@ public class ObstacleSpawner : MonoBehaviour
             else if (type == 2)
                 prefab = dodgePrefab;
             else if (type == 3)
+            {
                 prefab = coinPrefab;
+                int rand = Random.Range(0, 100);
+                if (rand > 10)
+                    prefab = powerPrefab; 
+            }
+  
+
 
             if (prefab == null)
             {
