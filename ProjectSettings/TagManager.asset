@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Obstacle
   - Power
+  - PowerTime
   layers:
   - Default
   - TransparentFX

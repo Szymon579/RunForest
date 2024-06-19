@@ -12,6 +12,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject dodgePrefab;
     public GameObject coinPrefab;
     public GameObject powerPrefab;
+    public GameObject powerTimePrefab;
     public int noObstacles = 3;
 
     private float height = 0.5f;
@@ -40,7 +41,7 @@ public class ObstacleSpawner : MonoBehaviour
             int type = Random.Range(0, 100);
 
             value = value % 3 - 1;
-            type = type % 4;
+            type = type % 8;
 
             if (obstacles.ContainsKey(key)) //skip if there is already an anstacle at given x
                 continue;
@@ -55,12 +56,15 @@ public class ObstacleSpawner : MonoBehaviour
                 prefab = slidePrefab;
             else if (type == 2)
                 prefab = dodgePrefab;
-            else if (type == 3)
+            else if (type >= 3)
             {
-                prefab = coinPrefab;
                 int rand = Random.Range(0, 100);
-                if (rand > 10)
-                    prefab = powerPrefab; 
+                if (rand > 0 && rand <= 5)
+                    prefab = powerPrefab;
+                else if (rand > 95 && rand <= 100)
+                    prefab = powerTimePrefab;
+                else
+                    prefab = coinPrefab;
             }
   
 
@@ -73,7 +77,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             GameObject obstacle = Instantiate(prefab, road.transform.position + new Vector3(value, height, key), Quaternion.identity, transform);
 
-            if (type == 3)
+            if (type >= 3)
             {
                 obstacle.transform.position += new Vector3(0, 0.2f, 0);
                 coins.Add(obstacle);

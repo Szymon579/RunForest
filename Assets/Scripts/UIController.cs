@@ -19,11 +19,13 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        int distance = (int)(GameState.speed * Time.timeSinceLevelLoad);
+        int distance = (int)(GameState.speed_distance * Time.timeSinceLevelLoad);
 
+        
         if (GameState.speed != 0)
         {
             GameState.distance = distance;
+
         }
 
         distanceText.text = GameState.distance.ToString();

@@ -1,22 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CollisionController : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody rb;
     private Collider col;
+    public Light halo;
+    private CapsuleCollider coll;
 
     private bool musicPlaying = false;
     private bool powerUP = false;
+    private bool powerTime = false;
+
+    private Coroutine coruTime ;
+    private Coroutine coruPower;
 
     private void Start()
     {
+        halo.enabled = false;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        coll = GetComponent<CapsuleCollider>();
 
         if (!musicPlaying)
         {
@@ -49,8 +59,25 @@ public class CollisionController : MonoBehaviour
 
         if (other.transform.tag == "Power")
         {
+            halo.enabled = true;
+            if (powerUP)
+                StopCoroutine(coruPower);
             powerUP = true;
-            WaitAndDo(5.0f, () => { powerUP = false; });
+            coruPower = WaitAndDo(5.0f, () => { powerUP = false; halo.enabled = false;  });
+            AudioController.instance.PlayPowerSound(this.transform);
+            Destroy(other.gameObject);
+        }
+
+        if (other.transform.tag == "PowerTime")
+        {
+            if (powerTime)
+                StopCoroutine(coruTime);
+            else
+            {
+                GameState.speed *= 0.5f;
+            }
+            powerTime = true;
+            coruTime = WaitAndDo(5.0f, () => { GameState.speed *= 2.0f; powerTime = false; });
             AudioController.instance.PlayPowerSound(this.transform);
             Destroy(other.gameObject);
         }
@@ -59,13 +86,19 @@ public class CollisionController : MonoBehaviour
 
     private void cursedRagdoll()
     {
-        rb.freezeRotation = false;
-        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-        rb.AddForce(Vector3.forward * 2, ForceMode.Impulse);
-        
-        anim.enabled = false;
 
-        GameSave.SaveState(new Save());
+        anim.SetTrigger("death");
+        coll.height = 1.0f;
+        coll.center = new Vector3(0, 0.5f, 0);
+        powerUP = true;
+
+        //rb.freezeRotation = false;
+        //rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        //rb.AddForce(Vector3.forward * 2, ForceMode.Impulse);
+        
+        //anim.enabled = false;
+
+        //GameSave.SaveState(new Save());
     }
 
 
