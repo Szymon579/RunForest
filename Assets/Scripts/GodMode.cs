@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GodMode : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GodMode : MonoBehaviour
         menu.SetActive(true);
         shop.SetActive(false);
     }
+
+
+
 
     void Update()
     {
@@ -26,6 +30,24 @@ public class GodMode : MonoBehaviour
             GameState.coins -= 50;
             Debug.Log("Coins taken");
         }
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            ResetConfigFile();
+        }
             
+    }
+
+
+    void ResetConfigFile()
+    {
+        string filePath = Application.dataPath;
+        string god = File.ReadAllText(filePath + "/save_god_mode.json");
+
+        File.WriteAllText(filePath + "/save.json", god);
+        GameSave.LoadState();
+        GameSave.SaveState(new Save());
+
+        Debug.Log("Config overwritten!");
     }
 }

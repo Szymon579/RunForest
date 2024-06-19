@@ -50,7 +50,7 @@ public class ShopController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("update shop controller");
+        //Debug.Log("update shop controller");
         if(shopItem.bought && id == GameState.selectedId) 
         {
             setPanel.SetActive(true);

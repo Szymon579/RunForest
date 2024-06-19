@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2723581190591027302}
   - component: {fileID: 4986209284295793514}
   - component: {fileID: 5469851921273077348}
+  - component: {fileID: 2863913121320001890}
   m_Layer: 5
   m_Name: Icon Image
   m_TagString: Untagged
@@ -72,6 +73,21 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &2863913121320001890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566470702302897261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &621139986038459767
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +99,7 @@ GameObject:
   - component: {fileID: 7143849415578002639}
   - component: {fileID: 7302444751330353575}
   - component: {fileID: 8212594627432903521}
+  - component: {fileID: 6111122316802943001}
   m_Layer: 5
   m_Name: Icon Image
   m_TagString: Untagged
@@ -144,6 +161,21 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &6111122316802943001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621139986038459767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6056340792879439868
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +323,7 @@ GameObject:
   - component: {fileID: 661416600222511155}
   - component: {fileID: 5671041857973731250}
   - component: {fileID: 2105548240774471108}
+  - component: {fileID: 7298972598477836675}
   m_Layer: 5
   m_Name: ShopItem
   m_TagString: Untagged
@@ -425,6 +458,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be12bc8129d5ab48899f43e356b1d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7298972598477836675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7534018161354211848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7702903556899972476
 GameObject:
   m_ObjectHideFlags: 0

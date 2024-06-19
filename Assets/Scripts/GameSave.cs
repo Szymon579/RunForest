@@ -28,6 +28,13 @@ public class Save
         this.items = items;
         this.selectedItem = selectedId;
     }
+
+    public Save()
+    {
+        this.coins = GameState.coins;
+        this.items = GameState.items;
+        this.selectedItem = GameState.selectedId;
+    }
 }
 
 public static class GameSave

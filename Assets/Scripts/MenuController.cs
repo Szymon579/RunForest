@@ -29,6 +29,7 @@ public class MenuController : MonoBehaviour
 
     public void DisplayShop()
     {
+        GameSave.LoadState();
         menuPanel.SetActive(false);
         shopPanel.SetActive(true);
     }
