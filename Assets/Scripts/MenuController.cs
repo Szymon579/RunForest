@@ -36,14 +36,14 @@ public class MenuController : MonoBehaviour
 
     public void DisplayMenu()
     {
-        GameSave.SaveState(new Save(GameState.coins, GameState.items, GameState.selectedId));
+        GameSave.SaveState(new Save());
         menuPanel.SetActive(true);
         shopPanel.SetActive(false);
     }
 
     public void QuitGame()
     {
-        GameSave.SaveState(new Save(123, GameState.items, GameState.selectedId));
+        GameSave.SaveState(new Save());
                  
         Debug.Log("Quit");
         Application.Quit();

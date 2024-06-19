@@ -27,6 +27,9 @@ public class CollisionController : MonoBehaviour
         if (other.transform.tag == "Obstacle")
         {
             Debug.Log("Obstacle hit");
+            AudioController.instance.PlayDeathSound(this.transform);
+            if (GameState.distance > GameState.record)
+                GameState.record = GameState.distance;
             GameState.gameOver = true;
             cursedRagdoll();
         }
@@ -49,7 +52,7 @@ public class CollisionController : MonoBehaviour
         
         anim.enabled = false;
 
-        GameSave.SaveState(new Save(GameState.coins, GameState.items, GameState.selectedId));
+        GameSave.SaveState(new Save());
     }
 
 }

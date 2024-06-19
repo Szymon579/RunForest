@@ -10,6 +10,7 @@ public class AudioController : MonoBehaviour
 
     public AudioClip coinClip;
     public AudioClip musicClip;
+    public AudioClip deathClip;
 
     private void Awake() //singleton pattern
     {
@@ -29,6 +30,16 @@ public class AudioController : MonoBehaviour
         audioSource.Play();
 
         float clipLength = coinClip.length;
+        Destroy(audioSource.gameObject, clipLength);
+    }
+
+    public void PlayDeathSound(Transform soundTransform)
+    {
+        AudioSource audioSource = Instantiate(source, soundTransform.position, Quaternion.identity);
+        audioSource.clip = deathClip;
+        audioSource.Play();
+
+        float clipLength = deathClip.length;
         Destroy(audioSource.gameObject, clipLength);
     }
 

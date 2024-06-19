@@ -252,6 +252,7 @@ MonoBehaviour:
   source: {fileID: 65997952}
   coinClip: {fileID: 8300000, guid: 353eb42406f806143ac508fb75950b4b, type: 3}
   musicClip: {fileID: 8300000, guid: b41d6c86ff480b04ca4e9531bc7d02ed, type: 3}
+  deathClip: {fileID: 8300000, guid: 864b4beb27a2c2e47b071d7c0acfb596, type: 3}
 --- !u!4 &65997954
 Transform:
   m_ObjectHideFlags: 0

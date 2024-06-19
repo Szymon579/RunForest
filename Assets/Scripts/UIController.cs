@@ -19,9 +19,17 @@ public class UIController : MonoBehaviour
     void Update()
     {
         int distance = (int)(GameState.speed * Time.timeSinceLevelLoad);
-        distanceText.text = distance.ToString();
+
+        if (GameState.speed != 0)
+        {
+            GameState.distance = distance;
+        }
+
+        distanceText.text = GameState.distance.ToString();
 
         coinText.text = GameState.coins.ToString();
+
+        
 
         if (GameState.gameOver)
             gameOverPanel.SetActive(true);
