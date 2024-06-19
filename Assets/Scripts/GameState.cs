@@ -14,11 +14,13 @@ public class GameState : MonoBehaviour
     public static List<ShopItem> items = new List<ShopItem>();
     public static int selectedId = 0;
     public static int record = 0;
+    public static float speed_distance = 10.0f;
 
     public static void ResetState()
     {
         distance = 0;
         speed = 10.0f;
         gameOver = false;
-    }
+        speed_distance = 10.0f;
+}
 }

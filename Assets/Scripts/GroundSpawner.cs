@@ -47,8 +47,10 @@ public class GroundSpawner : MonoBehaviour
         
         
         GameState.speed += speedDelta * Time.deltaTime; // accelerate ground independently from framerate
-        
-        for(int i = 0; i < groundList.Count; i++)
+        GameState.speed_distance += speedDelta * Time.deltaTime;
+
+
+        for (int i = 0; i < groundList.Count; i++)
         {
             groundList[i].transform.Translate(Vector3.back * Time.deltaTime * GameState.speed);
 

@@ -8,6 +8,8 @@ TagManager:
   - CreateTag
   - Coin
   - Obstacle
+  - Power
+  - PowerTime
   layers:
   - Default
   - TransparentFX
