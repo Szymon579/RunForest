@@ -1,0 +1,15 @@
+{"coins":132,"items":[
+
+	{"price":100,"color":{"r":0.89,"g":0.89,"b":0.89,"a":1.0},"bought":true},
+	{"price":200,"color":{"r":0.69,"g":0.76,"b":0.76,"a":1.0},"bought":false},
+	{"price":300,"color":{"r":0.65,"g":0.49,"b":0.19,"a":1.0},"bought":false},
+	
+	{"price":400,"color":{"r":1.00,"g":0.00,"b":0.00,"a":1.0},"bought":false},
+	{"price":500,"color":{"r":0.00,"g":1.00,"b":0.00,"a":1.0},"bought":false},
+	{"price":600,"color":{"r":0.00,"g":0.00,"b":1.00,"a":1.0},"bought":false},
+	
+	{"price":700,"color":{"r":1.00,"g":1.00,"b":0.00,"a":1.0},"bought":false},
+	{"price":800,"color":{"r":0.00,"g":1.00,"b":1.00,"a":1.0},"bought":false},
+	{"price":900,"color":{"r":1.00,"g":0.00,"b":1.00,"a":1.0},"bought":false}
+
+	],"selectedItem":0,"record":79}

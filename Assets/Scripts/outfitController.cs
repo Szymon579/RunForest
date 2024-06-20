@@ -8,15 +8,11 @@ public class outfitController : MonoBehaviour
 
     private void Start()
     {
-        pantsMaterial.color = GameState.pantsColor;
+        pantsMaterial.color = GameState.items[GameState.selectedId].color;
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Alpha1))
-            pantsMaterial.color = Color.red;
-        if (Input.GetKeyUp(KeyCode.Alpha2))
-            pantsMaterial.color = Color.blue;
 
     }
 }

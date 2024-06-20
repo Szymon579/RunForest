@@ -52,6 +52,7 @@ public class ShopController : MonoBehaviour
         if(shopItem.bought && id == GameState.selectedId) 
         {
             setPanel.SetActive(true);
+            //SetItem();
         }
         else
         {
@@ -121,7 +122,7 @@ public class ShopController : MonoBehaviour
     private int GetItemId()
     {
         Debug.Log("Object name" + this.name);
-        string strId = this.name[name.Length - 1].ToString();
+        string strId = this.name[name.Length - 2].ToString();
         Debug.Log("id " + strId);
         return int.Parse(strId);
     }
