@@ -97,10 +97,12 @@ public class ShopController : MonoBehaviour
         int price = shopItem.price;
         if (price > GameState.coins)
         {
+            MenuAudioController.instance.PlayError();
             Debug.Log("Get money broke boy");
             return;
         }
 
+        MenuAudioController.instance.PlayPurchase();
         shopItem.bought = true;
 
         GameState.coins -= price;

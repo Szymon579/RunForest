@@ -22,6 +22,11 @@ public class AudioController : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+
+    }
+
     public void PlayCoinSound(Transform soundTransform)
     {
         AudioSource audioSource = Instantiate(source, soundTransform.position, Quaternion.identity);
@@ -56,7 +61,7 @@ public class AudioController : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(source, transform.position, Quaternion.identity);
         audioSource.clip = backgroundMusic;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.05f;
         audioSource.loop = true;
         audioSource.Play();
     }
