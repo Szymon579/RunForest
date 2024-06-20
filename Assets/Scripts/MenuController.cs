@@ -12,7 +12,6 @@ public class MenuController : MonoBehaviour
     public GameObject shopPanel;
     public TextMeshProUGUI recordText;
 
-
     private void Start()
     {
         GameSave.LoadState();
@@ -21,7 +20,7 @@ public class MenuController : MonoBehaviour
     private void Update()
     {
         coinsText.text = GameState.coins.ToString();
-        recordText.text = "Record : " + GameState.record.ToString();
+        recordText.text = "Best: " + GameState.record.ToString();
     }
 
     public void PlayGame()
@@ -50,6 +49,5 @@ public class MenuController : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
-
 
 }

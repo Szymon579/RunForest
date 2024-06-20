@@ -91,14 +91,6 @@ public class CollisionController : MonoBehaviour
         coll.height = 1.0f;
         coll.center = new Vector3(0, 0.5f, 0);
         powerUP = true;
-
-        //rb.freezeRotation = false;
-        //rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-        //rb.AddForce(Vector3.forward * 2, ForceMode.Impulse);
-        
-        //anim.enabled = false;
-
-        //GameSave.SaveState(new Save());
     }
 
 

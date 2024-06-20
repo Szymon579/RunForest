@@ -14,9 +14,6 @@ public class GodMode : MonoBehaviour
         shop.SetActive(false);
     }
 
-
-
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
@@ -37,7 +34,6 @@ public class GodMode : MonoBehaviour
         }
             
     }
-
 
     void ResetConfigFile()
     {

@@ -45,12 +45,10 @@ public class ShopController : MonoBehaviour
         {
             SetNotBought();
         }
-
     }
 
     private void Update()
     {
-        //Debug.Log("update shop controller");
         if(shopItem.bought && id == GameState.selectedId) 
         {
             setPanel.SetActive(true);
@@ -68,8 +66,7 @@ public class ShopController : MonoBehaviour
         if(id == GameState.selectedId) 
         {
             setPanel.SetActive(true);
-        }
-        
+        }      
     }
 
     private void SetNotBought()
@@ -78,11 +75,8 @@ public class ShopController : MonoBehaviour
         setPanel.SetActive(false);
     }
 
-    
-
-    public void BuyOrSetItem()
+    public void ItemClicked()
     {   
-
         if (!shopItem.bought) 
         {
             Debug.Log("BuyItem");
@@ -94,24 +88,23 @@ public class ShopController : MonoBehaviour
             SetItem();
         }
 
-        //GameSave.SaveState(new Save(GameState.coins, GameState.items, GameState.selectedId));
+        GameSave.SaveState(new Save());
     }
 
     private void BuyItem()
     {
-
         int price = shopItem.price;
         if (price > GameState.coins)
         {
             Debug.Log("Get money broke boy");
-            //SetNotBought();
             return;
         }
 
-        GameState.coins -= price;
-        
         shopItem.bought = true;
+
+        GameState.coins -= price;
         GameState.items[id] = shopItem;
+        GameState.selectedId = id;
 
         pricePanel.SetActive(false);
         SetBought();

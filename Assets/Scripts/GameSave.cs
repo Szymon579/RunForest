@@ -45,10 +45,10 @@ public class Save
         this.selectedItem = GameState.selectedId;
         this.record = GameState.record;
 
-        this.items.Add(new ShopItem(100, new Color(1, 0, 0, 1), false));
-        this.items.Add(new ShopItem(200, new Color(0, 1, 0, 1), false));
-        this.items.Add(new ShopItem(300, new Color(0, 0, 1, 1), false));
-        this.items.Add(new ShopItem(400, new Color(0, 1, 1, 1), false));
+        //this.items.Add(new ShopItem(100, new Color(1, 0, 0, 1), false));
+        //this.items.Add(new ShopItem(200, new Color(0, 1, 0, 1), false));
+        //this.items.Add(new ShopItem(300, new Color(0, 0, 1, 1), false));
+        //this.items.Add(new ShopItem(400, new Color(0, 1, 1, 1), false));
 
     }
 }
@@ -70,9 +70,8 @@ public static class GameSave
         
         GameState.coins = saveObject.coins;
         GameState.items = saveObject.items;
-        GameState.record = saveObject.record; 
-        Debug.Log("Coins from game state: " + GameState.coins);
-        Debug.Log("Item size: " + GameState.items.Count);
+        GameState.record = saveObject.record;
+        GameState.selectedId = saveObject.selectedItem;
     }
 
     public static void SaveState(Save saveObject)

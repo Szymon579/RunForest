@@ -22,5 +22,5 @@ public class GameState : MonoBehaviour
         speed = 10.0f;
         gameOver = false;
         speed_distance = 10.0f;
-}
+    }
 }

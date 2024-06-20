@@ -20,17 +20,7 @@ public class AudioController : MonoBehaviour
         {
             instance = this;
         }
-        //PlayMusic();
     }
-
-
-    //public void Start()
-    //{
-    //    source.clip = backgroundMusic;
-    //    source.loop = true;
-    //    source.Play();
-    //}
-
 
     public void PlayCoinSound(Transform soundTransform)
     {
@@ -66,13 +56,9 @@ public class AudioController : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(source, transform.position, Quaternion.identity);
         audioSource.clip = backgroundMusic;
-        audioSource.volume = 0.2f;
+        audioSource.volume = 0.1f;
         audioSource.loop = true;
         audioSource.Play();
-        
-
-        float clipLength = musicClip.length;
-        //Destroy(audioSource, clipLength);
     }
 
 

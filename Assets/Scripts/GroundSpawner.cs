@@ -5,9 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 public class GroundSpawner : MonoBehaviour
-{
-    //public float speed = GameState.speed;
-    
+{   
     public float speedDelta = 0.01f;
     public float deleteZ;
     public int numOfVisibleTiles = 5;
@@ -45,10 +43,8 @@ public class GroundSpawner : MonoBehaviour
         if (GameState.gameOver)
             disableMovement(true);
         
-        
         GameState.speed += speedDelta * Time.deltaTime; // accelerate ground independently from framerate
         GameState.speed_distance += speedDelta * Time.deltaTime;
-
 
         for (int i = 0; i < groundList.Count; i++)
         {
@@ -59,8 +55,7 @@ public class GroundSpawner : MonoBehaviour
                 deleteTile();
                 spawnTile();
             }
-        }
-               
+        }           
     }
 
     void spawnTile()
@@ -75,8 +70,6 @@ public class GroundSpawner : MonoBehaviour
         GameObject tile = Instantiate(groundPrefab, groundList[lastTile].transform.position + new Vector3(0, 0, 20), Quaternion.identity);
         tile.transform.SetParent(transform);
         groundList.Add(tile);
-        
-        Debug.Log("Tile spawned");
         
     }
 

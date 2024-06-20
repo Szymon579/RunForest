@@ -436,7 +436,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2105548240774471108}
         m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: BuyOrSetItem
+        m_MethodName: ItemClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
