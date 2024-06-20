@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.21960784, g: 0.2627451, b: 0.3882353, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.006
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 56113b3b655ab7349bab4d7d405c258a, type: 2}
-  m_HaloStrength: 0.323
+  m_HaloStrength: 0.345
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedDelta: 0.1
   deleteZ: -25
-  numOfVisibleTiles: 5
+  numOfVisibleTiles: 10
   groundPrefab: {fileID: 8955964648019484181, guid: dfe01573d2ddd5940b280bc6f04547e4, type: 3}
   startPrefab: {fileID: 6263106631152381802}
   disableMove: 0
