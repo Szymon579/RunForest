@@ -3,22 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class CollisionController : MonoBehaviour
 {
+    
+    public Light halo;
+    public Slider slowSlider;
+    public Slider ghostSlider;
+
     private Animator anim;
     private Rigidbody rb;
     private Collider col;
-    public Light halo;
     private CapsuleCollider coll;
 
     private bool musicPlaying = false;
     private bool powerUP = false;
     private bool powerTime = false;
-
-    private Coroutine coruTime ;
+    private Coroutine coruTime;
     private Coroutine coruPower;
+    private Coroutine coruGhostSlider;
+    private Coroutine coruSlowSlider;
+
 
     private void Start()
     {
@@ -59,25 +65,34 @@ public class CollisionController : MonoBehaviour
 
         if (other.transform.tag == "Power")
         {
-            halo.enabled = true;
+            //halo.enabled = true;
             if (powerUP)
+            {
                 StopCoroutine(coruPower);
+                StopCoroutine(coruGhostSlider);
+            }
+                
             powerUP = true;
-            coruPower = WaitAndDo(5.0f, () => { powerUP = false; halo.enabled = false;  });
+            coruPower = WaitAndDo(5.0f, ghostSlider, () => { powerUP = false; halo.enabled = false;  });
             AudioController.instance.PlayPowerSound(this.transform);
             Destroy(other.gameObject);
         }
 
         if (other.transform.tag == "PowerTime")
         {
+            //showProgress(slowSlider);
             if (powerTime)
+            {
                 StopCoroutine(coruTime);
+                StopCoroutine(coruSlowSlider);
+            }
+                
             else
             {
-                GameState.speed *= 0.5f;
+                GameState.speed *= 0.8f;
             }
             powerTime = true;
-            coruTime = WaitAndDo(5.0f, () => { GameState.speed *= 2.0f; powerTime = false; });
+            coruTime = WaitAndDo(5.0f, slowSlider, () => { GameState.speed *= 1.25f; powerTime = false; });
             AudioController.instance.PlayPowerSound(this.transform);
             Destroy(other.gameObject);
         }
@@ -94,8 +109,13 @@ public class CollisionController : MonoBehaviour
     }
 
 
-    public Coroutine WaitAndDo(float timeInSeconds, Action action)
+    public Coroutine WaitAndDo(float timeInSeconds, Slider slider, Action action)
     {
+        if (slider == ghostSlider)
+            coruGhostSlider = StartCoroutine(DecreaseValue(5.0f, slider));
+        if (slider == slowSlider)
+            coruSlowSlider = StartCoroutine(DecreaseValue(5.0f, slider));
+
         return StartCoroutine(Execute(timeInSeconds, action));
     }
 
@@ -104,4 +124,29 @@ public class CollisionController : MonoBehaviour
         yield return new WaitForSeconds(timeInSeconds);
         if (Application.isPlaying) action();
     }
+
+    //private Coroutine showProgress(Slider slider)
+    //{
+    //    slider.value = slider.maxValue;
+        
+    //    if(slider = ghostSlider)
+    //        return StartCoroutine(DecreaseValue(5.0f, slider));
+    //    return null;
+    //}
+
+    private IEnumerator DecreaseValue(float duration, Slider slider)
+    {
+        float startValue = slider.maxValue;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            slider.value = Mathf.Lerp(startValue, 0f, elapsedTime / duration);
+            yield return null; // Wait for the next frame
+        }
+
+        slider.value = slider.minValue; // Ensure the value is set to zero at the end
+    }
+
 }
