@@ -555,7 +555,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.3679245, g: 0.33905357, b: 0.10586506, a: 1}
   m_Intensity: 15
-  m_Range: 1.2
+  m_Range: 0
   m_SpotAngle: 30.7
   m_InnerSpotAngle: 9.1
   m_CookieSize: 10
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedDelta: 0.1
   deleteZ: -25
-  numOfVisibleTiles: 10
+  numOfVisibleTiles: 15
   groundPrefab: {fileID: 8955964648019484181, guid: dfe01573d2ddd5940b280bc6f04547e4, type: 3}
   startPrefab: {fileID: 6263106631152381802}
   disableMove: 0

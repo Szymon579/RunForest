@@ -85,8 +85,7 @@ public class CollisionController : MonoBehaviour
             {
                 StopCoroutine(coruTime);
                 StopCoroutine(coruSlowSlider);
-            }
-                
+            }            
             else
             {
                 GameState.speed *= 0.8f;

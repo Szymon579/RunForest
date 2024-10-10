@@ -68,7 +68,6 @@ public class ObstacleSpawner : MonoBehaviour
             }
   
 
-
             if (prefab == null)
             {
                 Debug.Log("Obstacle prefab is null");
